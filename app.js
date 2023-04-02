@@ -3,9 +3,11 @@ import getAccessToken, { setupAccessToken } from './spotify/spotifytAccesToken.j
 import * as querystring from 'querystring'
 import * as dotenv from 'dotenv'
 import spotifyToken from './spotify/spotifyToken.js'
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 dotenv.config()
 // api
