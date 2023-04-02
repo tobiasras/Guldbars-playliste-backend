@@ -6,8 +6,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx tailwindcss -i ./input.css -o ./public/styling/main.css --watch\n"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.18.2"
@@ -20,6 +19,7 @@
   "license": "MIT",
   "homepage": "#",
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "eslint": "^8.36.0",
     "eslint-config-semistandard": "^17.0.0",
     "eslint-config-standard": "^17.0.0",
