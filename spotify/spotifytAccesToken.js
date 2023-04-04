@@ -5,8 +5,7 @@ let requestKey = null
 
 export default async function getAccessToken () {
   if (!requestKey) {
-    console.log('request key: null. Remember to login')
-    return -1
+    return null
   }
 
   const nowTime = new Date()
@@ -34,17 +33,11 @@ async function requestToken (nowTime) {
   timeToExpire = new Date(nowTime.getTime() + res.expires_in * 1000)
 }
 
-/* SETUP
-{
-  access_token: 'BQCC-P5WeG...60R0',
-  token_type: 'Bearer',
-  expires_in: 3600,
-  refresh_token: 'AQDL2Jt-k7kDLq...2xyA',
-  scope: 'user-modify-playback-state'
-}
- */
-
 export function setupAccessToken (setup) {
+  console.log('is logged in')
+
+  console.log(setup)
+
   accesKey = setup.access_token
   requestKey = setup.refresh_token
   timeToExpire = new Date(new Date().getTime() + setup.expires_in * 1000)
