@@ -29,7 +29,7 @@ routerSpotifyAuthentication.get('/login', function (req, res) {
         querystring.stringify({
           response_type: 'code',
           client_id: process.env.SPOTIFY_CLIENT_ID,
-          scope: 'user-modify-playback-state ' + 'user-read-private ' + 'user-read-email',
+          scope: 'user-modify-playback-state ' + 'user-read-private ' + 'user-read-email ' + 'user-read-playback-state',
           redirect_uri: process.env.SPOTIFY_CLIENT_CALLBACK_URL
         })
 
