@@ -16,5 +16,8 @@ https://developer.spotify.com/documentation/web-api
 
 or ask Tobiasras for it.
 
+Then the application should be ready to run
 
-
+``` shell
+npm start
+```
