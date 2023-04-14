@@ -12,7 +12,8 @@ routerSpotifyPlayer.get('/state', async (req, res) => {
   const response = await promise
 
   res.send(await response)
-})
+});
+
 
 routerSpotifyPlayer.post('/next', async (req, res) => {
   fetch('https://api.spotify.com/v1/me/player/next', {
