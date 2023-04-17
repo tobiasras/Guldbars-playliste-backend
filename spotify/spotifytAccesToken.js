@@ -34,10 +34,6 @@ async function requestToken (nowTime) {
 }
 
 export function setupAccessToken (setup) {
-  console.log('is logged in')
-
-  console.log(setup)
-
   accesKey = setup.access_token
   requestKey = setup.refresh_token
   timeToExpire = new Date(new Date().getTime() + setup.expires_in * 1000)
