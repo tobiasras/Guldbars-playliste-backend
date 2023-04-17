@@ -30,7 +30,7 @@ routerQueue.post('/', async (req, res) => {
   })
 
   const result = await promise
-  sendMessageByStatus(result.status, res)
+  sendMessageByStatus(result, res)
 })
 
 export default routerQueue

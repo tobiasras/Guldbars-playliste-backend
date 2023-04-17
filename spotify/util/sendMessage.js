@@ -2,6 +2,7 @@
 export default function sendMessageByStatus (result, res) {
   switch (result.status) {
     case 204:
+      res.status(204)
       res.send({ message: 'Command sent' })
       break
     case 400:
