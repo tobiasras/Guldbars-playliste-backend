@@ -1,6 +1,6 @@
 import express from 'express'
 import getAccessToken from '../spotify/spotifytAccesToken.js'
-import { filterQueue } from '../spotify/Filters/trackObjectFilter.js'
+import { filterQueue } from '../spotify/filters/trackObjectFilter.js'
 import sendMessageByStatus from '../spotify/util/sendMessage.js'
 
 const routerQueue = express.Router()
@@ -14,7 +14,7 @@ routerQueue.get('/', async (req, res) => {
   const response = await promise
 
   if (response.status !== 200) {
-    sendMessageByStatus(response.status, res)
+    sendMessageByStatus(response, res)
   } else {
     const result = await response.json()
     res.send(filterQueue(result.queue))
