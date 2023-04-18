@@ -14,7 +14,8 @@ export function filterTrackObject (trackObject) {
     href: trackObject.external_urls,
     artist: trackObject.artist,
     uri: trackObject.uri,
-    preview_url: trackObject.preview_url
+    preview_url: trackObject.preview_url,
+    duration_ms: trackObject.duration_ms
   }
 
   return track

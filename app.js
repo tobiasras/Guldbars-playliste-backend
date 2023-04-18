@@ -6,6 +6,7 @@ import routerSpotifyAuthentication from './routes/spotifyAuthentication.js'
 import adminLogin from './routes/adminLogin.js'
 import spotifyPlayer from './routes/spotifyPlayer.js'
 import spotifyQueue from './routes/spotifyQueue.js'
+import spotifySeeach from './routes/spotifySearch.js'
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use('/auth', routerSpotifyAuthentication)
 app.use('/admin', adminLogin)
 app.use('/player', spotifyPlayer)
 app.use('/queue', spotifyQueue)
+app.use('/search', spotifySeeach)
 
 app.listen(8080, (error) => {
   if (error) {
