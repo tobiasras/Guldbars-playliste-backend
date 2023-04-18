@@ -14,7 +14,7 @@ routerQueue.get('/', async (req, res) => {
   const response = await promise
 
   if (response.status !== 200) {
-    sendMessageByStatus(response.status, res)
+    sendMessageByStatus(response, res)
   } else {
     const result = await response.json()
     res.send(filterQueue(result.queue))

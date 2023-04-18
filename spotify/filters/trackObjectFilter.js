@@ -12,7 +12,7 @@ export function filterTrackObject (trackObject) {
     name: trackObject.name,
     images: trackObject.album.images,
     href: trackObject.external_urls,
-    artist: trackObject.artist,
+    artists: trackObject.artists,
     uri: trackObject.uri,
     preview_url: trackObject.preview_url,
     duration_ms: trackObject.duration_ms
