@@ -1,4 +1,3 @@
-
 export default function sendMessageByStatus (result, res) {
   switch (result.status) {
     case 204:
