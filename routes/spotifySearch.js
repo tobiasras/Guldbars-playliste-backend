@@ -7,7 +7,6 @@ const routerSearch = express.Router()
 
 routerSearch.get("/", async (req, res) => {
     const query = req.query.q
-    console.log(query)
     if(!query){
         res.status(400).send("Search query is empty")
         return

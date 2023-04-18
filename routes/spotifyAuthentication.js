@@ -49,6 +49,7 @@ routerSpotifyAuthentication.get('/callback', async (req, res) => {
 
   setupAccessToken(spotifyAccess)
   res.redirect('http://localhost:3000/admin')
+  
 })
 
 export default routerSpotifyAuthentication
