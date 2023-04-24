@@ -11,21 +11,25 @@ import { createLimiter } from './routes/Limiters/limiters.js'
 
 const app = express()
 
+const isNoLimit = process.argv.indexOf('nolimit') !== -1
+
 app.use(express.json())
 app.use(cors())
 dotenv.config()
 app.use(express.urlencoded({ extended: true }))
 
-// Apply the rate limiting middleware to API calls only
-app.use('/auth', createLimiter(15, 5))
+if (!isNoLimit) {
+  app.use('/auth', createLimiter(15, 50))
+  app.use('/admin', createLimiter(5, 5))
+  app.use('/player', createLimiter(15, 100))
+
+  app.get('/queue', createLimiter(15, 5))
+  app.post('/queue', createLimiter(5, 1))
+}
+
 app.use('/auth', routerSpotifyAuthentication)
-
-app.use('/admin', createLimiter(5, 5))
 app.use('/admin', adminLogin)
-
-app.use('/player', createLimiter(15, 100))
 app.use('/player', spotifyPlayer)
-
 app.use('/queue', spotifyQueue)
 app.use('/search', spotifySearch)
 
@@ -33,6 +37,7 @@ app.listen(8080, (error) => {
   if (error) {
     console.log(error)
   } else {
-    console.log('__ server is running __')
+    console.log('Server is running')
+    console.log('limits = ' + isNoLimit)
   }
 })
