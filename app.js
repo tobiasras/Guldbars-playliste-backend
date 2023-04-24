@@ -1,17 +1,20 @@
 import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
-
 import routerSpotifyAuthentication from './routes/spotifyAuthentication.js'
 import adminLogin from './routes/adminLogin.js'
 import spotifyPlayer from './routes/spotifyPlayer.js'
 import spotifyQueue from './routes/spotifyQueue.js'
 import spotifySearch from './routes/spotifySearch.js'
 import { createLimiter } from './routes/Limiters/limiters.js'
-
+import bcrypt from 'bcrypt'
 const app = express()
 
 const isNoLimit = process.argv.indexOf('nolimit') !== -1
+
+const salt = await bcrypt.genSalt(10)
+const hash = await bcrypt.hash(process.env.BACKEND_PASSWORD, salt)
+app.locals.adminPassword = hash
 
 app.use(express.json())
 app.use(cors())
@@ -22,7 +25,6 @@ if (!isNoLimit) {
   app.use('/auth', createLimiter(15, 50))
   app.use('/admin', createLimiter(5, 5))
   app.use('/player', createLimiter(15, 100))
-
   app.get('/queue', createLimiter(15, 5))
   app.post('/queue', createLimiter(5, 1))
 }
